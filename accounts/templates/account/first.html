@@ -1,0 +1,440 @@
+{% extends 'base1.html'%}
+{%load static%}
+{% block title %}
+register
+{% endblock %}
+
+{%block content%}
+<style>
+        .form-signin {
+  width: 100%;
+  padding: 15px;
+  margin: auto;
+  background-color:#a56666cf;
+  }
+</style>
+        <form method="post" name="forms" class="col-md-6 form-signin"  enctype="multipart/form-data" onsubmit="return validation()" > {% csrf_token %}
+             <h1 class="text-center text-light">Personal Information</h1><hr>
+                    <div class="form-group row">
+            <label class="col-sm-3 col-form-label text-light">Phone</label>
+              <div class="col-sm-4">
+               <input type="number" class="form-control" name="phone" autocomplete="on">
+             </div>
+         </div>
+         <div class="form-group row">
+           <label class="col-sm-3 col-form-label text-light">NID</label>
+             <div class="col-sm-4">
+              <input type="number" class="form-control" name="nid"autocomplete="on">
+            </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label text-light">Gender</label>
+            <div class="col-sm-3">
+              <select name="gender" class="form-control">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+             </select>
+           </div>
+       </div>
+       <div class="form-group row">
+         <label class="col-sm-3 col-form-label text-light">Birth Date</label>
+           <div class="col-sm-4">
+            <input type="date" class="form-control" name="date">
+          </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label text-light">Height(inc/)</label>
+          <div class="col-sm-3">
+           <input type="number" class="form-control" name="height">
+         </div>
+     </div>
+     <div class="form-group row">
+       <label class="col-sm-3 col-form-label text-light">Marital Status</label>
+         <div class="col-sm-4">
+           <select name="maritalstatus" class="form-control">
+             <option value="Married">Married</option>
+             <option value="Unmarried">Unmarried</option>
+             <option value="Divorced">Divorced </option>
+          </select>
+        </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label text-light">No of Child</label>
+        <div class="col-sm-3">
+         <input type="number" class="form-control" name="child" value="0">
+       </div>
+   </div>
+   <div class="form-group row">
+     <label class="col-sm-3 col-form-label text-light">Body Shape</label>
+       <div class="col-sm-4">
+         <select name="bodyshap" class="form-control">
+           <option value="Fat">Fat</option>
+           <option value="Slim">Slim</option>
+           <option value="Average">Average </option>
+        </select>
+      </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label text-light">Complexion</label>
+      <div class="col-sm-4">
+        <select name="complexion" class="form-control">
+          <option value="Fair">Fair</option>
+          <option value="Very Fair">Very Fair</option>
+          <option value="Dark">Dark</option>
+          <option value="Wheatish Medium">Wheatish Medium</option>
+          <option value="Wheatish Brown">Wheatish Brown</option>
+       </select>
+     </div>
+ </div>
+  <div class="form-group row mb-4">
+    <label class="col-sm-3 col-form-label text-light">Blood Group</label>
+      <div class="col-sm-2">
+        <select name="bloodgroup" class="form-control">
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+          <option value="Slim">Slim</option>
+          <option value="Average">Average </option>
+       </select>
+     </div>
+ </div>
+ <div class="form-group row">
+   <label class="col-sm-3 col-form-label text-light">Website</label>
+     <div class="col-sm-6">
+      <input type="text"  name="website" class="form-control">
+    </div>
+ </div>
+ <div class="form-group row">
+   <label class="col-sm-3 col-form-label text-light">Photo</label>
+     <div class="col-sm-6">
+      <input type="file"  name="img" >
+    </div>
+ </div>
+ <h1 class="text-center text-light">Family Information</h1><hr>
+ <div class="form-group row mb-4">
+   <label class="col-sm-3 col-form-label text-light">Father</label>
+     <div class="col-sm-3">
+       <select name="father" class="form-control">
+         <option value="Employed">Employed</option>
+         <option value="Unemployed">Unemployed</option>
+         <option value="Retired">Retired</option>
+         <option value="Business">Business</option>
+         <option value="Others Job">Others Job</option>
+         <option value="Passed away">Passed away</option>
+      </select>
+    </div>
+</div>
+<div class="form-group row mb-4">
+  <label class="col-sm-3 col-form-label text-light">Mother</label>
+    <div class="col-sm-3">
+      <select name="mother" class="form-control">
+        <option value="Home maker">Home maker</option>
+        <option value="Employed">Employed</option>
+        <option value="Unemployed">Unemployed</option>
+        <option value="Retired">Retired</option>
+        <option value="Business">Business</option>
+        <option value="Others Job">Others Job</option>
+        <option value="Passed away">Passed away</option>
+     </select>
+   </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-3 col-form-label text-light">Have Brother</label>
+    <div class="col-sm-2">
+     <input type="number" class="form-control" value="0" name="brother">
+   </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-3 col-form-label text-light">Have Sister</label>
+    <div class="col-sm-2">
+     <input type="number" class="form-control" value="0" name="sister">
+   </div>
+</div>
+<h1 class="text-center text-light">Community & Religion Information</h1><hr>
+<div class="form-group row">
+  <label class="col-sm-3 col-form-label text-light">Religion</label>
+    <div class="col-sm-3">
+      <select name="religion" class="form-control">
+        <option value="Muslim">Muslim</option>
+        <option value="Hindu">Hindu</option>
+        <option value="Christian">Christian</option>
+        <option value="Buddhist">Buddhist</option>
+        <option value="Others">Others</option>
+     </select>
+   </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-3 col-form-label text-light">Mother Tongue</label>
+    <div class="col-sm-3">
+      <select name="mothertongue" class="form-control">
+        <option value="Bangla">Bangla</option>
+        <option value="English">English</option>
+        <option value="Hinde">Hinde</option>
+        <option value="Others">Others</option>
+     </select>
+   </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-3 col-form-label text-light">Family Value</label>
+    <div class="col-sm-3">
+      <select name="familyvalue" class="form-control">
+        <option value="Religious">Religious</option>
+        <option value="Traditional">Traditional</option>
+        <option value="Moderate">Moderate</option>
+        <option value="Liberal">Liberal</option>
+        <option value="Others">Others</option>
+     </select>
+   </div>
+</div>
+<h1 class="text-center text-light">Location and Address</h1><hr>
+<div class="form-group row">
+  <label class="col-sm-3 col-form-label text-light">Living Country</label>
+    <div class="col-sm-6">
+     <input type="text" class="form-control" name="livingcountry">
+   </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-3 col-form-label text-light">Living City</label>
+    <div class="col-sm-6">
+     <input type="text" class="form-control" name="livingcity">
+   </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-3 col-form-label text-light">Living Area</label>
+    <div class="col-sm-6">
+     <input type="text" class="form-control" name="livingarea">
+   </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-3 col-form-label text-light">Residential Status</label>
+    <div class="col-sm-6">
+      <select name="resedentalstatus" class="form-control">
+        <option value="Rental">Rental</option>
+        <option value="Owner">Owner</option>
+     </select>
+   </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-3 col-form-label text-light">Home Country</label>
+    <div class="col-sm-6">
+     <input type="text" class="form-control" name="homecountry">
+   </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-3 col-form-label text-light">Home District</label>
+    <div class="col-sm-6">
+     <input type="text" class="form-control" name="homedistrict">
+   </div>
+</div>
+<h1 class="text-center text-light">About You and Your Family</h1><hr>
+<div class="form-group row">
+  <label class="col-sm-3 col-form-label text-light">About yourself</label>
+    <div class="col-sm-7">
+     <textarea class="form-control" name="aboutyourself" rows="3"></textarea>
+   </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-3 col-form-label text-light">About Family</label>
+    <div class="col-sm-7">
+     <textarea class="form-control" name="aboutyourfamily" rows="3"></textarea>
+   </div>
+</div>
+<h1 class="text-center text-light">Education Background</h1><hr>
+<div class="form-group row">
+  <label class="col-sm-4 col-form-label text-light">Highest Education</label>
+    <div class="col-sm-6">
+      <select name="education" class="form-control">
+        <option value="SSC">SSC</option>
+        <option value="HSC">HSC</option>
+        <option value="Hnours">Hnours</option>
+        <option value="BSc">BSc</option>
+        <option value="BBA">BBA</option>
+        <option value="MBA">MBA</option>
+        <option value="PHD">PHD</option>
+        <option value="Dakhil">Dakhil</option>
+        <option value="MBBS">MBBS</option>
+        <option value="Alim">Alim</option>
+        <option value="Fajil">Fajil</option>
+        <option value="Kamil">Kamil</option>
+
+     </select>
+   </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-4 col-form-label text-light">University/College </label>
+    <div class="col-sm-6">
+     <input type="text" class="form-control" name="universitycollege">
+   </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-4 col-form-label text-light">Current Profession </label>
+    <div class="col-sm-6">
+     <input type="text" class="form-control" name="profession">
+   </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-4 col-form-label text-light">Current Designation</label>
+    <div class="col-sm-6">
+     <input type="text" class="form-control" name="designstion">
+   </div>
+</div>
+<h1 class="text-center text-light">Prefered Patner</h1><hr>
+<div class="form-group row">
+  <label class="col-sm-4 col-form-label text-light">Patner Age</label>
+    <div class="col-sm-6">
+      <select name="preferedage" class="form-control">
+        <option value="18-25">18-25</option>
+        <option value="25-30">25-30</option>
+        <option value="30-35">30-35</option>
+        <option value="35-40">35-40</option>
+        <option value="40-45">40-45</option>
+        <option value="45-50">45-50</option>
+        <option value="50+">50+</option>
+     </select>
+   </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-4 col-form-label text-light">Prefered Marriage Status</label>
+    <div class="col-sm-6">
+      <select name="preferedmaritalstatus" class="form-control">
+        <option value="Married">Married</option>
+        <option value="Unmarried">Unmarried</option>
+        <option value="Divorced">Divorced </option>
+        <option value="Anuthings">Anuthings </option>
+     </select>
+   </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-4 col-form-label text-light">Prefered Religion</label>
+    <div class="col-sm-6">
+      <select name="preferedreligion" class="form-control">
+        <option value="Muslim">Muslim</option>
+        <option value="Hindu">Hindu</option>
+        <option value="Christian">Christian</option>
+        <option value="Buddhist">Buddhist</option>
+        <option value="Others">Others</option>
+     </select>
+   </div>
+</div>
+<h1 class="text-center text-light">Patner Location and Address</h1><hr>
+<div class="form-group row">
+  <label class="col-sm-4 col-form-label text-light">Home Country</label>
+    <div class="col-sm-6">
+     <input type="text" class="form-control" name="preferedcountry">
+   </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-4 col-form-label text-light">Current Living</label>
+    <div class="col-sm-6">
+     <input type="text" class="form-control" name="preferedlivingarea">
+   </div>
+</div>
+<h1 class="text-center text-light">Education and Profession</h1><hr>
+<div class="form-group row">
+  <label class="col-sm-4 col-form-label text-light">Highest Education</label>
+    <div class="col-sm-6">
+      <select name="preferededucation" class="form-control">
+        <option value="SSC">SSC</option>
+        <option value="HSC">HSC</option>
+        <option value="Hnours">Hnours</option>
+        <option value="BSc">BSc</option>
+        <option value="BBA">BBA</option>
+        <option value="MBA">MBA</option>
+        <option value="PHD">PHD</option>
+        <option value="Dakhil">Dakhil</option>
+        <option value="MBBS">MBBS</option>
+        <option value="Alim">Alim</option>
+        <option value="Fajil">Fajil</option>
+        <option value="Kamil">Kamil</option>
+
+     </select>
+   </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-4 col-form-label text-light">Prefered Profession</label>
+    <div class="col-sm-6">
+     <input type="text" class="form-control" name="preferedprofession">
+   </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-4 col-form-label text-light">About Patner</label>
+    <div class="col-sm-7">
+     <textarea class="form-control" name="aboutpatner" rows="3"></textarea>
+   </div>
+</div>
+ <div class="form-group row">
+  <label class="col-sm-4 col-form-label text-light">Were are ready to go..</label>
+    <div class="col-sm-7">
+     <input type="submit" class="btn btn-primary col-sm-3 ml-4 center" value="Register">
+   </div>
+</div>
+
+        </form>
+
+
+<script>
+     function validation()
+    {
+    var phone=document.forms.phone.value;
+    var nid=document.forms.nid.value;
+    var gen=document.forms.gender.value;
+    var dt=document.forms.date.value;
+    var height=document.forms.height.value;
+    var website=document.forms.website.value;
+    var img=document.forms.img.value;
+    var living_country = document.forms.livingcountry.value;
+<!--    var livingcity = document.forms.livingcity.value;-->
+<!--    var livingarea = document.forms.livingarea.value;-->
+<!--    var homecountry = document.forms.homecountry.value;-->
+<!--    var homedistrict = document.forms.homedistrict.value;-->
+<!--    var aboutyourself = document.forms.aboutyourself.value;-->
+<!--    var aboutfamily = document.forms.aboutfamily.value;-->
+<!--    var aboutpatner = document.forms.aboutpatner.value;-->
+        if (phone==""){
+        alert("Error: Phone must not empty!");
+        return false;
+        }
+        if (phone.charAt(0)!=0 || phone.charAt(1)!=1){
+            alert("Error: Phone must be start with  0 or 1");
+            return false;
+				}
+        if (nid==""){
+            alert("Error: nid must not null ");
+            return false;
+        }
+        if (nid.length != 11){
+            alert("Error: nid must be 11 digit!");
+            return false;
+        }
+         if (dt==""){
+            alert("Error: select your birth date");
+            return false;
+        }
+        if (height=="" || height<50){
+            alert("Error: Height must not empty and less then 50 ");
+            return false;
+        }
+        if (website==""){
+            alert("Error: website fill must not empty ");
+            return false;
+        }
+        if (img==""){
+            alert("Error: Select your photo ");
+            return false;
+        }
+        if (living_country==""){
+            alert("Error: Enter your country name ");
+            return false;
+        }
+
+
+
+    }
+
+</script>
+{%endblock%}

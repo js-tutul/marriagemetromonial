@@ -1,0 +1,16 @@
+#footer{
+    background-color: #020202;
+    width: 100%;
+    height: auto;
+}
+#footer,h4{
+    color:white;
+    text-align: center;
+}
+#title{
+    font-size: 3rem;
+    color: floralwhite;
+}
+.bg-light {
+    background-color: #02d4ad94!important;
+}

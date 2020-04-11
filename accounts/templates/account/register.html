@@ -1,0 +1,140 @@
+{% extends 'base1.html'%}
+{%load static%}
+{% block title %}
+register
+{% endblock %}
+
+{% block content %}
+<style>
+#register{
+    background-image:url({% static 'background\register.jpg' %});
+    width:100%;
+    height:auto;
+}
+span{
+color:red;
+}
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  }
+</style>
+
+<div class="container">
+     {% if messages %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+         {% for message in messages %}
+  <strong>{{ message}}</strong> You should try aging.
+        {% endfor %}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+      {% endif %}
+    <form method="post" name="forms" id="register_form" class="form-signin" onsubmit="return validation()">
+      {% csrf_token %}
+    <h2 class="text-primary">Registration Form</h2><hr>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Enter Username" name="username">
+      <span id="userID"></span>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Enter FirstName" name="first_name">
+      <span id="firstID"></span>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Enter LastName" name="last_name">
+      <span id="lastID"></span>
+    </div>
+  <div class="form-group">
+    <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter email" name="email">
+     <span id="emailID"></span>
+  </div>
+  <div class="form-group">
+    <input type="password" class="form-control" placeholder="Password" name="password1">
+    <span id="passwordID"></span>
+  </div>
+  <div class="form-group">
+    <input type="password" class="form-control"  placeholder="Confirmation Password" name="password2">
+  </div>
+  <input type="submit" class="btn btn-primary" value="Register">
+</form>
+</div>
+<script>
+    function validation()
+    {
+    var user=document.forms.username.value;
+    var first=document.forms.first_name.value;
+    var last=document.forms.last_name.value;
+    var email = document.forms.email.value;
+    var pass = document.forms.password1.value;
+    var con_pass = document.forms.password2.value;
+    var letters = /^[A-Za-z]+$/;
+    if (user==""){
+		document.getElementById("userID").innerHTML="** Please fill the field";
+		return false;
+    }
+    if (!user.match(letters)){
+			document.getElementById("userID").innerHTML="** number and special character not allow";
+			return false;
+		}
+    if (user.length<3 || user.length>17){
+			document.getElementById("userID").innerHTML="**Username must be 3 to 16 character";
+			return false;
+		}
+
+
+    if (first==""){
+		document.getElementById("firstID").innerHTML="** Please fill the field";
+		return false;
+    }
+    if (!first.match(letters)){
+			document.getElementById("firstID").innerHTML="** number and special character not allow";
+			return false;
+		}
+    if (first.length<3 || first.length>17){
+			document.getElementById("firstID").innerHTML="**last must be 3 to 16 character";
+			return false;
+		}
+    if (last==""){
+		document.getElementById("lastID").innerHTML="** Please fill the field";
+		return false;
+    }
+    if (!last.match(letters)){
+			document.getElementById("lastID").innerHTML="** number and special character not allow";
+			return false;
+		}
+    if (last.length<3 || last.length>17){
+			document.getElementById("lastID").innerHTML="**last must be 3 to 16 character";
+			return false;
+		}
+    if (email==""){
+			document.getElementById("emailID").innerHTML="**please fill email field";
+			return false;
+		}
+    if (email.indexOf('@')<=0){
+			document.getElementById("emailID").innerHTML="**Invalid @ position";
+			return false;
+		}
+    if ((email.charAt(email.length-4)!='.') && (email.charAt(email.length-3)!='.') ){
+			document.getElementById("emailID").innerHTML="**Invalid . position";
+			return false;
+		}
+    if (pass==""){
+			document.getElementById("passwordID").innerHTML="** Please fill the fields";
+			return false;
+		}
+	if (pass.length<8 || pass.length>=15){
+        document.getElementById("passwordID").innerHTML="**Password length must be grater then 8 and less then 16 character";
+        return false;
+    }
+    if(pass!=con_pass){
+        document.getElementById("passwordID").innerHTML="**Password are not matching";
+        return false;
+    }
+    }
+</script>
+{% endblock %}
+

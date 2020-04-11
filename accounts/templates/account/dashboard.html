@@ -1,0 +1,53 @@
+{% extends 'account\base.html'%}
+{% load static %}
+{% block title %}
+Welcome to dashboard
+{% endblock %}
+
+{% block content %}
+        <div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          DashBoard
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        Dashboard is usually the one page that the users see first thing in the web application. It is the page that shows the analysis of the application's data, trends, summaries etc.
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Profile
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+          <p>Profile attribute points to a document containing information regarding to a user.User can view his/her information that he use to create account in this site and confirm his information .If this information is not correct he can update it also.</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+         Update Profile
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body">
+          <p>When you create your account you submit some information .Here you can easily change those information .You have to fill the all the form correctly to update your information.Be carefull to fill the form or you will get an error.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

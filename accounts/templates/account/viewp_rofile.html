@@ -1,0 +1,204 @@
+{% extends 'account/base.html'%}
+{%load static%}
+{% block title %}
+View full profile
+{% endblock %}
+
+{% block content %}
+<style>
+    tr{
+    background:green;
+    }
+    td{
+    color:white;
+    font-size:20px;
+    }
+</style>
+<div class="col-mod-8">
+    <h2 class="col-mod-6 text-light bg-warning">Personal Information</h2>
+    <table class="col-md-12 table table-bordered">
+  <tbody>
+    <tr>
+      <td>First Name</td>
+      <td colspan="2">{{user.first_name}}</td>
+    </tr>
+    <tr>
+      <td>Last Name</td>
+      <td colspan="2">{{user.last_name}}</td>
+    </tr>
+    <tr>
+      <td>National ID</td>
+      <td colspan="2">{{file.nationalID}}</td>
+    </tr>
+      <tr>
+      <td>Phone No</td>
+      <td colspan="2">{{file.phone}}</td>
+    </tr>
+     <tr>
+      <td>Marital Status</td>
+      <td colspan="2">{{file.maritalStatus}}</td>
+    </tr>
+    <tr>
+    <tr>
+      <td>Date of Birth</td>
+      <td colspan="2">{{file.birth}}</td>
+    </tr>
+    <tr>
+     <td>Body Type</td>
+      <td colspan="2">{{file.bodyType}}</td>
+    </tr>
+    <tr>
+        <td>Height</td>
+        <td>{{file.height}} Inc</td>
+    </tr>
+    <tr>
+        <td>Have Child</td>
+        <td>{{file.Children}}</td>
+    </tr>
+    <tr>
+        <td>Blood Group</td>
+        <td>{{file.blodGroup}}</td>
+    </tr>
+    <tr>
+        <td>Complexion</td>
+        <td>{{file.Complexion}}</td>
+    </tr>
+    <tr>
+        <td>Mother Tongue</td>
+        <td>{{file.mothertongue}}</td>
+    </tr>
+    <tr>
+        <td>Religious</td>
+        <td>{{file.religon}}</td>
+    </tr>
+    <tr>
+      <td>Website</td>
+      <td colspan="2">{{file.website}}</td>
+    </tr>
+    <tr>
+  </tbody>
+</table>
+
+  <h2 class="col-mod-6 text-light bg-warning">Family Information</h2>
+    <table class="col-md-12 table table-bordered">
+  <tbody>
+    <tr>
+      <td colspan="1">Father </td>
+      <td colspan="3">{{file.father}}</td>
+    </tr>
+    <tr>
+      <td colspan="1">Mother</td>
+      <td colspan="3">{{file.mother}}</td>
+    </tr>
+    <tr>
+      <td colspan="1">Family Value </td>
+      <td colspan="3">{{file.familyvalue}}</td>
+    </tr>
+      <tr>
+      <td colspan="1">Have Brother</td>
+      <td colspan="3">{{file.brother}}</td>
+    </tr>
+     <tr>
+      <td colspan="1">Have Sister</td>
+      <td colspan="3">{{file.sister}}</td>
+    </tr>
+    <tr>
+      <td colspan="1">About Family</td>
+      <td colspan="3">{{file.aboutfamily}}</td>
+    </tr>
+      <tr>
+      <td colspan="1">About Myself</td>
+      <td colspan="3">{{file.aboutyou}}</td>
+    </tr>
+  </tbody>
+</table>
+ <h2 class="col-mod-6 text-light bg-warning">Education Information</h2>
+    <table class="col-md-12 table table-bordered">
+  <tbody>
+    <tr>
+      <td>Highest Education </td>
+      <td>{{file.education}}</td>
+    </tr>
+    <tr>
+      <td>University</td>
+      <td>{{file.universitycollege}}</td>
+    </tr>
+    <tr>
+      <td >Profession</td>
+      <td>{{file.profession}}</td>
+    </tr>
+      <tr>
+      <td>Designation</td>
+      <td >{{file.designation}}</td>
+    </tr>
+  </tbody>
+</table>
+<h2 class="col-mod-6 text-light bg-warning">Location and Living </h2>
+    <table class="col-md-12 table table-bordered">
+  <tbody>
+    <tr>
+      <td>Home Country</td>
+      <td>{{file.homecountry}}</td>
+    </tr>
+    <tr>
+      <td>Home District</td>
+      <td>{{file.homedistrict}}</td>
+    </tr>
+    <tr>
+      <td >Current Country</td>
+      <td>{{file.currentlivingcourtry}}</td>
+    </tr>
+      <tr>
+      <td>Current City</td>
+      <td >{{file.currentlivingcity}}</td>
+    </tr>
+        <tr>
+      <td>Living Area</td>
+      <td >{{file.currentlivingarea}}</td>
+    </tr>
+        <tr>
+      <td>Residencial Status</td>
+      <td >{{file.residentialstatus}}</td>
+    </tr>
+  </tbody>
+</table>
+<h2 class="col-mod-6 text-light bg-warning">Patner Sections </h2>
+    <table class="col-md-12 table table-bordered">
+  <tbody>
+    <tr>
+      <td>Prefered Age</td>
+      <td>{{file.preferredage}}</td>
+    </tr>
+    <tr>
+      <td>Marriage Status</td>
+      <td>{{file.preferredmarrige}}</td>
+    </tr>
+    <tr>
+      <td>Religious</td>
+      <td>{{file.patnerreligon}}</td>
+    </tr>
+    <tr>
+      <td >Home Country</td>
+      <td>{{file.patnerhomecountry}}</td>
+    </tr>
+      <tr>
+      <td>Current Living</td>
+      <td >{{file.patnercurrentliving}}</td>
+    </tr>
+        <tr>
+      <td>Highest Education</td>
+      <td >{{file.patnereducation}}</td>
+    </tr>
+    <tr>
+      <td>Profession</td>
+      <td >{{file.patnerprofession}}</td>
+    </tr>
+      <tr>
+      <td>About Patner</td>
+      <td >{{file.aboutpatner}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+{% endblock %}

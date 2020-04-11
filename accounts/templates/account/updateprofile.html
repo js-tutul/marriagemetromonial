@@ -1,0 +1,25 @@
+{% extends 'account\base.html'%}
+{% load static %}
+{% load crispy_forms_tags %}
+{% crispy form %}
+{% block title%}
+update profile
+{% endblock %}
+
+{% block content %}
+<style>
+    .form-a{
+    padding-left:200px;
+    }
+</style>
+<form method="POST" class="col-md-12 ml-4 mb-4 form-a" enctype="multipart/form-data">
+                <h4 class="pb-4 mb-2 font-italic border-bottom text-primary">
+                   Profile Update
+                </h4>
+                {% csrf_token %}
+                {{ form1|crispy}}
+                {{ form| crispy}}
+                <input type="submit" class="btn btn-primary" value="Update">
+</form>
+
+{% endblock %}

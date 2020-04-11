@@ -1,0 +1,45 @@
+{% extends "base1.html" %}
+{% load static %}
+{% block title%}
+Login page
+{% endblock %}
+
+{% block content %}
+<style>
+    .container{
+        width: 100%;
+        min-height:640px;
+        background-image: url({% static 'background\login-background.jpg' %});
+    }  
+</style>
+<div class="container" >
+    <br><br>
+  <div class="col-md-5 offset-md-3 my-5 mt-5 log">
+  <br>
+  <h2 id="tit">Login Page</h2>
+  <hr>
+      <form method="post" >
+              {% csrf_token %}
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Username" name="username" autocomplete="off">
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" placeholder="Password" name="password" >
+    </div>
+    <button type="submit"  class="btn btn-primary mb-3">Submit</button>
+          <hr>
+          <a style="color: white" href="{% url 'password_reset'%}"}>Forget Password</a>
+  </form>
+  
+          {% if messages %}
+          <ul class="messages">
+          {% for message in messages %}
+          <li class="{{ message.tags }}">{{ message }}</li>
+          {% endfor %}
+          </ul>
+          {% endif %}
+  <br>
+  </div>
+  
+  </div>
+{% endblock%}

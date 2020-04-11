@@ -1,0 +1,91 @@
+ <!DOCTYPE html>
+{% load staticfiles %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <style>
+        #bg {
+    background-color: #ffc107!important;
+    max-width: fit-content;
+}
+    </style>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <a class="navbar-brand text-primary" href="#">MarriageMatromonial.Com</a>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'Homepage'%}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Blog page</a>
+      </li>
+    </ul>
+      <ul class="navbar-nav my-2 my-lg-0">
+              {% if user.is_authenticated %}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{user.username}}<img src="{% static 'logo/user.png' %}">
+        </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                    <a class="dropdown-item" href="{% url 'Dashbord'%}">Dashbord</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{% url 'Logout' %}">Logout</a>
+                </div>
+      </li>
+               {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'Register'%}">Register</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'Login' %}">Login</a>
+              </li>
+              {% endif %}
+    </ul>
+
+  </div>
+</nav>
+<main role="main">
+  <div class="row">
+    <aside class="col-md-2 blog-sidebar bg-warning" id="bg">
+      <div class="p-4">
+        <h4 class="font-italic">Dashboard</h4>
+        <ol class="list-unstyled mb-0">
+          <li><a href="{% url 'profile'%}">User Profile</a></li>
+          <li><a href="{% url 'change_password'%}">Change Password</a></li>
+          <li><a href="{% url 'viewprofile'%}">View Profile</a></li>
+        </ol>
+      </div>
+    </aside>
+    <div class="col-md-10 blog-main">
+        {% block content %}
+
+        {% endblock %}
+
+      </div><!-- /.blog-post -->
+    </div><!-- /.blog-main -->
+
+  </div>
+
+</main>
+    <div id="footer">
+           <h3>All Right are Reserved &copy;  MarriageMatromonial.Com</h3>
+    </div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
